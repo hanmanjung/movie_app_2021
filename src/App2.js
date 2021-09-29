@@ -1,4 +1,11 @@
 class Apps extends Component {
+  constructor(props){
+    super(props) 
+    console.log('constructor');
+    }
+    componentDidMount() {
+      console.log('componentDidMount');
+    }
   state = {
     count: 0
   }
@@ -12,6 +19,7 @@ class Apps extends Component {
   }
 
   render() {
+    console.log('render')
     return(
       <div>
       <h1>Rhe number is: {this.state.count} </h1>
