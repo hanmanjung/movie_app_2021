@@ -3,9 +3,15 @@ class Apps extends Component {
     super(props) 
     console.log('constructor');
     }
+
     componentDidMount() {
       console.log('componentDidMount');
     }
+
+    componentDidUpdate() {
+      console.log('componentDidUpdate...Goodbye');
+    }
+
   state = {
     count: 0
   }
