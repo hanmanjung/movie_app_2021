@@ -12,77 +12,77 @@
 > 8. render() 함수를 사용해보자.
 > 9. state 정의하기
 - 조금 더 나아가기 <br>
-I.04-4 음식 앱에 prop-types 도입하기<br>
+<h2>I.04-4 음식 앱에 prop-types 도입하기</h2><br>
    - 정의한 props의 값이 컴포넌트에 제대로 전달되지 않으면 어떻게 해야 할까?<br>
    - pricture props에 {dish.image}가 아닌 {true}를 전달하면 어떻게 될까?<br>
    - 여러가지 이유로 원하는 대로 이미지 등이 나오지 않을 때 이를 검사할 수 있는 방법은 없을까?<br>
    - 이번 절에서는 이 검사 방법에 대해 알아 보도록 한다.<br>
 
-액션 01. 음식 데이터에 rating 추가하기<br>
+<h3>액션 01. 음식 데이터에 rating 추가하기</h3><br>
    - foodLike 배열의 각 요소에 rating(평점)을 추가한다.
    - 값의 자료형은 number로 한다.<br>
    - Rating props를 Food 컴포넌트에 전달하면서 이 값을 검사해 보기로 한다.<br>
    - 그러기 위해서는 props의 자료형을 검사할 수 있도록 만들어 주는 prop-types라는 도구가 필요하다.<br>
    - 다음 액션에서는 도구를 설치해 본다.<br>
-액션02. prop-type 설치하기<br>
+<h3>액션02. prop-type 설치하기</h3><br>
    - 터미널에서 다음 명령을 입력해서 prop-types를 설치한다.<br>
-액션03. 정상 설치 여부 확인<br>
+<h3>액션03. 정상 설치 여부 확인</h3><br>
    - package.json파일을 열어 dependencies 키에 있는 값을 살펴보자<br>
    - prop-types가 등록되어 있으면 설치가 정상적으로 된 것이다.<br>
    - prop-types는 컴포넌트가 전달받은 props가 원하는 값인지 확인해 주는 역할을 한다.<br>
    - prop-types를 통해 "Food 컴포넌트는 반드시 picture props가 전달되야 한다"고 정의할 수 있다.<br>
-액션04. prop-types 적용하기<br>
+<h3>액션04. prop-types 적용하기</h3><br>
    - Import PropTypes from 'prop-types';를 App.js 파일 맨 위에 추가해 주자.<br>
    - 그리고 rating props를 Food 컴포넌트에 전달하자<br>
    - 아직 prop-types를 적용한 상태는 아니다.<br>
-액션05. Food.propTypes 작성하기<br>
+<h3>액션05. Food.propTypes 작성하기</h3><br>
    - 이제 prop-types를 적용해 보자.<br>
    - Food.propType에 객체를 적어 주기만 하면 된다.<br>
    - 모든 props는 문자열이고 반드시 있어야 한다는 조건을 추가해 보자.<br>
    - 실행하면 별 문제가 없어 보이지만, 콘솔 탭을 확인해 보면 경고 메시지가 보인다.<br>
-액션06. Food.propTypes의 rating 키 값 확인하기<br>
+<h3>액션06. Food.propTypes의 rating 키 값 확인하기</h3><br>
    - IsRequired는 필요하다는 뜻 이다.
    - 'rating에는 string이라는 자료형이 반드시 필요하다'는 이야기 이다.<br>
-액션07.prop-types 경고 해결하기<br>
+<h3>액션07.prop-types 경고 해결하기</h3><br>
    - rating: propTypes.string.isRequired 대신 rating: PropTypes.number.JsRequired로 교체<br>
    - Console탭을 확인해 보면 prop type 경고 메시지가 사라져 있다.<br>
-액션08. 다른 종류의 prop-types 경고 해결하기<br>
+<h3>액션08. 다른 종류의 prop-types 경고 해결하기</h3><br>
    - Picture props의 이름을 image로 바꿔보자<br>
    - 화면에 사진이 나오지 않게 된다<br>
    - Console 탭을 살펴보면 그 이유를 알 수 있다.<br>
    - Food 컴포넌트에 picture라는 이름의 props가 필요한데, 그 값이 underfined다.<br>  
-II.05-1 state로 숫자 증감 기능 만들어 보기<br>
+<h2>II.05-1 state로 숫자 증감 기능 만들어 보기</h2><br>
    - props는 정적인 데이터만 다룰 수 있다.<br>
    - state는 동적인 데이터를 다루기 위해 사용된다.<br>
    - state는 class형 컴포넌트에서 사용된다.<br>
    - 기존의 App.js는 04-App.js로 이름을 바꾸고 새로운 App.js파일을 생성한다.<br>
-액션01. 클래스형 컴포넌트 작성하기<br>
-액션02. App클래스가 React.Component 클래스를 상속 받도록 하자.<br>
+<h3>액션01. 클래스형 컴포넌트 작성하기</h3><br>
+<h3>액션02. App클래스가 React.Component 클래스를 상속 받도록 하자.</h3><br>
    - class를 'React.Component'로 상속받아 생성한다.<br>
    - 'React.Component' 클래스는 500여 줄이 넘는 코드로 여러가지 기능이 이미 구현되어 있기 때문에 사용하기에 편리하다.<br>
    - import할 때 '{Component}'를 써주면 extends에서 'React'을 생략할 수 있다.<br>
-액션03. render() 함수를 사용해보자.<br>
+<h3>액션03. render() 함수를 사용해보자.</h3><br>
    - App컴포넌트가 JSX를 반환해야 하지만 class형 컴포넌트에서는 바로 return을 사용할 수 없다.<br>
    - render() 함수 내에서 return문을 사용한다.<br>
    - 함수형 컴포넌트는 return문이 JSX를 반환하지만, 클래스형 컴포넌트는 render() 함수가 JSX를 반환한다.<br>
-액션04. state 정의하기<br>
-액션05. state에 count값 추가하고 사용하기.<br>
-III. 생성자란 무엇인가<br>
+<h3>액션04. state 정의하기</h3><br>
+<h3>액션05. state에 count값 추가하고 사용하기.</h3><br>
+<h2>III. 생성자란 무엇인가</h2><br>
    - constructor()는 Component를 생성할 때 state 값을 초기화하거나 메서드를 바인딩할 때 사용한다.<br>
    - React Component를 상속해서 만들어진 컴포넌트의 생성자를 구현할 때는 super(props)를 선언을 권고하는 이유는 this.props사용 시 생성자 내에서 정의되지 않아 버그 발생 가능성이 있기 때문입니다.<br>
    - 자바스크립트에서 super는 부모클래스 생성자의 참조한다는 의미이다.<br>
    - 또한가지 자바스크립트는 언어적 제약사항으로 생성자에서 super를 호출하기 전에는 this를 사용할 수없다. 반드시 super를 먼저 호출해야 this를 사용할 수 있다는 것이다.<br>
    - 생성자 내에서는 setState를 사용하지 않고, this.state를 사용하여 state의 초기값을 할당한다.<br>
    - 생성자 내에서는 외부API를 직접 호출할 수 없다. 필요하다면 componentDidMount()를 사용한다.<br>
-액션02. componentDidMount() 함수 알아보기<br>
+<h3>액션02. componentDidMount() 함수 알아보기</h3><br>
    - componentDidMount() 함수를 선언하고, 함수 안에 console.log() 함수를 작성하여 실행되는 시점을 확인해 본다.<br>
    - 실행 순서를 console을 통해 확인해 보면 render() 함수 실행 직후인 것을 확인할 수 있다.<br>
-액션03/04 componentDidUpdate() 함수 알아보기<br>
+<h3>액션03/04 componentDidUpdate() 함수 알아보기</h3><br>
    - 액션02와 동일한 방법으로 componentDidUpdate() 함수의 실행 순서를 확인한다.<br>
    - 단순히 실행한 것으로는 console에 출력되지 않는다. 화면이 없데이트 되어야 한다.<br>
    - 버튼을 클릭해서 화면을 업데이트 하면서, console을 확인한다.<br>
    - 버튼을 클릭하면 setState() 함수가 실행되고, render()함수로 화면이 업데이트된 직후 componentDidUpdate()함수가 실행된다.<br>
-액션05. componentWillUnmount() 함수 알아보기<br>
+<h3>액션05. componentWillUnmount() 함수 알아보기</h3><br>
    - componentWillUnmount() 함수도 위와 마찬가지로 테스트를 한다. <br>
    - 하지만 이경우 실행 여부를 직접 확인할 수는 없다.<br>
    - 이 함수는 컴포넌트가 화면에서 떠날 때 실행된다.<br>
