@@ -2,6 +2,101 @@
 
 ## [ 09월 29일]
 > 학습내용 <br />
+> 06-1. 영화 API사용해 보기
+> 액션02. YTS영화 데이터 API 살펴보기
+> 액션03. 영화 목록 데이터 확인해 보기
+> 액션04. JSON Viewer 확장 도구 설치하기
+> 액션05.
+> 액션06. 노마드 코더 영화 API를 사용하자
+> 액션07.
+> 액션08. 영화 정보 더 자세히 살펴보기
+> 액션09. 영화 정보를 더 자세히 보기 위해 조건 추가하기
+> 액션10. movie_id가 10인 영화 정보 살펴보기
+> 액션11. 노마드 코더 영화 API를 영화 앱에서 호출하기
+> 06-2. 영화 데이터 화면에 그리기
+> 액션02. 영화 데이터 자세히 살펴보기
+- 조금 더 나아가기 <br>
+<h2>06-1. 영화 API사용해 보기</h2><br>
+   * 액션01. axios 설치하기<br>
+     - javascript에서는 영화 데이터를 로딩 할 때 fetch()함수를 사용한다.<br>
+     - 하지만 이 시간은 javascript시간이 아님으로 그 대신 axios를 사용하도록 한다.<br>
+     - 터미널에서 다음과 같이 입력하여 axios를 설치한다.
+        -> npm install axios<br>
+   * 액션02. YTS영화 데이터 API 살펴보기<br>
+     - 브라우저 주소창에 yts.lt/api라고 입력하고, YTS영화 데이터 API 사이트에 접속해보자.<br>
+     - 앞으로 사용할 API는 'List Movies API'이다.<br>
+     - List Movies를 클릭한다. 로그인 하지 않아도 된다.<br>
+     - API는 특정 주소를 입력하면 그 주소에 맞는 결과를 보내 준다.<br>
+     - 조건도 붙일 수 있도록 제공한다.<br>
+   * 액션03. 영화 목록 데이터 확인해 보기<br>
+     - 브라우저에서 Endpoint의 주소 중 json으로 끝나는 주소를 입력한다.<br>
+     - min스타일로 제공되기 때문에 보기가 아주 불편하다.<br>
+   * 액션04. JSON Viewer 확장 도구 설치하기<br>
+     - JSON Viewer라는 확장 도구를 설치하면 정상적으로 볼 수 있다.<br>
+     - 크롬 웹스토어 JSON Viewer라고 검색하고 설치한다.<br>
+   * 액션05. <br>
+     - 액션03에서 접속했던 주소로 다시 접속해 보자.<br>
+     - status: 응답상태 메시지<br>
+     - data: 영화 데이터<br>
+     - movie_count: API가 보내준 영화 데이터의 개수<br>
+     - limit: 보내준 데이터의 개수<br>
+     - movies키의 서브키로 id,url,imdb_code,title 등을 제공한다.<br>
+   * 액션06. 노마드 코더 영화 API를 사용하자<br>
+     - API GitHub에 접속해 보면 README.md 소개 글에 다음과 같은 내용이 있다.<br>
+     - YTS의 endpoint /list_movies.json을 사용하려면 yts-proxy.now.sh에 /list_movies.json을 붙이면 된다.<br>
+     - 만일 YTS의 다른 endpoint와 함께 노마드 코더 영화 API를 사용하려면, yts-proxy.now.sh에 endpoint를 붙이면 된다.<br>
+   * 액션07,액션08. 영화 정보 더 자세히 살펴보기<br>
+     - 영화 정보를 좀더 자세히 살펴보자<br>
+   *액션09. 영화 정보를 더 자세히 보기 위해 조건 추가하기<br>
+     - Example에 있는 주소를 보면 movie_id를 어떻게 추가 하는지 알 수 있다.<br>
+2. 06-2 영화 데이터 화면에 그리기<br>
+   * 액션01. console.log() 함수로 영화 데이터 출력해 보기<br>
+     - 앞에서 우리가 작업한 결과로 API가 보내준 데이터는 movies에 들어가 있을 것이다.<br>
+     - console을 통해 출력해 보자.<br>
+   * 액션02. 영화 데이터 자세히 살펴보기<br>
+     - 출력된 데이터를 세심히 살펴 어떻게 사용할 지를 구상한다.<br>
+     - 특히 dataㅣ키에 집중하여 살펴본다.<br>
+   * 액션04. 객체에 있는 movies키에 접근하기<br>
+     - movies변수에 있는 movies 키의 값을 추출해 보자.<br>
+     - 이제 우리가 원하는 데이터만 추출된 것을 확인할 수 있다.
+   * 액션05,액션06. movies state에 영화 데이터 저장하기<br>
+   * 액션07.<br>
+   <pre><code> 
+   import React from "react";
+import axious from "axios";
+
+class App extends React.Component {
+  state = {
+    isLoading: true,
+    movies: []
+  }
+
+  getMovies = async () => {
+    const {
+      data: {
+        data: {movies}
+      }
+    } = await axios.get('https://yts.proxy.now.sh/list_movies.json')
+    const movies 
+    console.log(movies);
+  }
+  componentDidMount() {
+    this.getMovies()
+}
+  render() {
+    const {isLoading} = this.state
+    return (
+      <div>
+        { isLoading ? 'Loading...' : '영화 데이터 출력'}
+      </div>
+    )
+  }
+}
+
+export default App
+   </code></pre>
+## [ 09월 29일]
+> 학습내용 <br />
 > 1. 상대경로 이미지 삽입 방법 
 > 2. 음식 앱에 prop-types 도입하기
 > 3. Food.propTypes 작성하기
