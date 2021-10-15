@@ -2,6 +2,178 @@
 
 ## [ 10월 06일]
 > 학습내용 <br />
+> 06-3 Movie 컴포넌트 만들기
+> 액션02. 영화 데이터 다시 살펴보기
+> 액션03.04 Movie.propTypes 작성하기
+> 액션06.07.08 노마드 코더 영화 API 정렬 기능 사용해 보기
+> 액션09. axios.get() 수정하기
+> 액션10. Movie 컴포넌트에서 props를 추가하고 출력해 보기
+> 액션11. App 컴포넌트에서 Movie컴포넌트 그리기
+> 액션12. map() 함수에 컴포넌트를 반환하는 함수 전달하기
+> 액션13.Movie 컴포넌트를 반환하도록 movies.map() 수정하기
+> 액션14.Movie컴포넌트에 props 전달하기
+> 액션15. console탭에서 영화 데이터 확인해 보기
+> 액션16. key props 추가하기
+> 06-4 영화 앱 스타일링 하기 - 기초
+> 액션02. Movie 컴포넌트에 HTML추가하기
+> 액션03. 영화 포스터 이미지 추가하기 
+> 07-1 영화 앱 전체 모습 수정하기
+> 07-2 영화 앱 멋지게 스타일링하기
+- 조금 더 나아가기 <br>
+<h2>06-3. Movie 컴포넌트 만들기</h2><br>
+   * 액션01. Movie 컴포넌트 만들기 
+     - src폴더에 Movie.js파일을 새로 만든다.<br>
+     - 컴포넌트의 기본 골격을 작성한다.<br>
+     - Movie 컴포넌트는 state가 필요하지 않으므로 클래스형 컴포넌트가 아닌, 함수형 컴포넌트로 작성하기로 한다.<br>
+     - Movie에 넘어와야 하는 영화 데이터를 정의하고, 관리하기 위해 prop-types를 사용한다.<br>
+   * 액션02. 영화 데이터 다시 살펴보기<br>
+     - yts-proxy.now.sh/list_movies.json에 접속해서 사용할 영화 데이터를 다시 확인한다.<br>
+     - 데이터 중 필요한 것만 골라서 영화 앱에 반영한다.<br>
+   * 액션03.04. Movie.propTypes 작성하기<br>
+     - 먼저 id를 Movie.propTypes를 추가 한다.<br>
+     - id의 자료형은 Number이고, 반드시 있어야 함으로 PropType.number.isRequired로 작성한다.<br>
+     -year,title,summary,poster를 각각 Movie.propTypes에 추가한다.<br>
+     - 여기서 poster props는 영화 포스터 이미지 주소를 저장하기 위한 것이다.<br>
+   * 액션06.07.08 노마드 코더 영화 API정렬 기능 사용해 보기<br>
+     - 평점을 기준으로 내림차순으로 영화 데이터를 정렬해 보여 주는 것을 확인할 수 있다.<br>
+   * 액션09. axios.get() 수정하기<br>
+     - axios.get()yts-proxy.now.sh/list_movies.json?sort_by=rating을 전달한다<br>
+  <pre><code>   
+  import PropTypes from 'prop-types'
+import "./Movie.css"
+
+function Movie({title, year, summary, poster, genres}) {
+    return(
+    <div className='movie'>
+        <img src={poster} alt={title} title ={title} />
+        <div className='movie-data'>
+            <h3 className='movie-title'>{title}</h3>
+            <h5 className='movie-year'>{year}</h5>
+            <p className='movie-summary'>{summary}</p>
+        </div> 
+    </div>
+    )
+}
+
+
+Movie.propTypes = {
+    year: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    summary:PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired
+}
+
+export default Movie 
+</code></pre>
+<h2>06-4.영화 앱 스타일링 하기 - 기초</h2><br>
+    * 액션01. App 컴포넌트에 HTML추가하기<br>
+      - App컴포넌트가 반환할 JSX바깥쪽을<section class="container">로 감싼다.<br>
+      - Loading..은 <div class="loader"><span class="leader" >로 감싼다.<br>
+      movies.map()은 <div class="movies">로 감싼다.<br>
+    * 액션02. Movie컴포넌트에 HTML추가하기<br>
+      - Movie 컴포넌트가 반환할 JSX를 <div class="movie">로 감싼다.<br>
+      - 그 안에서 title,year,summary를 목적에 맞는 tag로 감싼다.<br>
+    * 액션03. 영화 포스터 이미지 추가하기<br>
+      - 전체 tag를 감싸는 div tag(class="movie")를 추가 한다.<br>
+      - img tag를 그 아래 추가해서 src속성에는 poster props를, alt속성에는 title props를 전달한다.<br>
+    * 액션04. Movie 컴포넌트 정리하기<br>
+      - Movie 컴포넌트에는 id props가 필요 없으니 제거해 준다.<br>
+    * 액션05. style속성으로 title 스타일링하기<br>
+      - h3 tag에 style 속성을 추가하고 backgroundColor를 red로 준다.<br>
+    * 액션06.CSS파일 생성<br>
+      - src폴더에 App.css,Movie.css를 생성한다.<br>
+    * 액션07.08.Movie 컴포넌트에 CSS 파일 import하기<br>
+<h2>07-1.영화 앱 전체 모습 수정하기</h2><br>
+    - 페이지의 디자인은 다음과 같이 한다.<br>
+    - 왼쪽 위에는 살짝 튀어나온 듯한 느낌의 영화 포스트<br>
+    - 오른쪽에는 제목,장르,평점(별 표시), 시놉시스<br>
+    * 액션01. App.css 내용 모두 지우기<br>
+      - 만일 삭제하거나 없다면 새로 생성한다.
+    * 액션02. Movie 컴포넌트에 genres props 넘겨주기 <br>
+      - 런타이(runtime) 아래 있는 장르(genres)를 추가해 준다.<br>
+    * 액션03. Movie 컴포넌트 수정하기<br>
+      - App컴포넌트에서 Movie컴포넌트에 genres props를 넘겨준다.
+      - console을 확인해 보면 두가지의 warming을 확인할 수 있다.<br>
+    * 액션04. App 컴포넌트 수정하기<br>
+      - genres props가 Movie 컴포넌트에 underfined로 넘어 왔다는 부분 부터 수정한다.<br>
+      - 이는 App컴포넌트에서 해당 props를 Movie컴포넌트로 전달 하기만 하면 된다.
+      - 메시지가 사라졌는지 console을 확인해 보자.<br>
+    * 액션05. class 속성 이름 className으로 바꿔 주기 <br>
+      - 먼저 이런 메시지는 왜 나오는 것일까?<br>
+      - 이는 HTML의 class와 자바스크립트의 class라는 이름이 겹치면 리액트가 혼란스러울 수 있기 때문이다.<br>
+      - console에서 확인한다.<br>
+      - 이와 유사한 예를 하나 더 설명하면, 바로 label문의 for element이다.<br>
+      - 이것도 for="name"이 아니라 htmlFor="name"으로 작성한다.<br>
+    * 액션06. 영화 장르 출력하기<br>
+      - Movie컴포넌트에서 장르를 출력하도록 코드를 수정한다.<br>
+      - genres props가 배열이므로 map()함수를 사용한다.<br>
+      - genres props를 ul,li태그로 감싸서 출력한다.<br>
+      - console을 확인하면 kye props가 없다는 메시지가 나온다.<br>
+    * 액션07. li tag에 key props 추가하기<br>
+      - 그런데 genre에는 key값으로 사용하기에 적당한 id값 같은 것이 없다.<br>
+      - 이럴 경우 새롭게 만들어 내야 하는데, map() 함수에는 2번째 매개변수를 지정할 경우 배열의 Index 값을 반환해 주는 기능이 있다.<br>
+      - 이것을 이용해서 배열의 인덱스를 key props로 활용하는 것이다.<br>
+      -console을 확인해 본다.<br>
+<pre><code>
+import React from "react"
+import axios from "axios"
+import Movie from "./Movie"
+import "./App.css"
+
+class App extends React.Component{
+  state = {
+    isLoading : true,
+    movies : []
+  }
+
+  getMovies = async() => {
+    const{
+      data: {
+        data : {movies}
+      }
+    } = await axios.get('https://yts-proxy.now.sh/list_movies.json?sort_by=rating')
+    console.log(movies);
+    this.setState({movies, isLoading: false})
+  }
+
+  componentDidMount(){
+   this.getMovies()
+  }
+  render() {
+    const { isLoading, movies } = this.state
+    return(
+      <section className='container'>
+        { isLoading ?
+        ( <div className='loader'>
+          <span className='loader-text'> Loading....</span>
+          </div>
+          ) : (
+            <div className='movies'>
+              {
+                movies.map((movie) => {
+                  console.log(movie);
+                  return <Movie 
+                          key = {movie.id}
+                          id = {movie.id}
+                          year = {movie.year}
+                          title = {movie.title}
+                          summary = {movie.summary}
+                          poster = {movie.medium_cover_image}
+                          genres = {movie.genres}
+                          />
+                        })}
+            </div>
+          )}
+        </section>
+    )
+  }
+}
+
+export default App;   
+</code></pre>   
+## [ 10월 06일]
+> 학습내용 <br />
 > 06-1. 영화 API사용해 보기
 > 액션02. YTS영화 데이터 API 살펴보기
 > 액션03. 영화 목록 데이터 확인해 보기
