@@ -1,5 +1,72 @@
 # 한만중 201840233
 
+## [ 10월 27일]
+> 학습내용 <br />
+> 08-1. react-router-dom 설치하고 프로젝트 폴더 정리하기
+> 08-2. 라우터 만들어 보기
+> 액션03. ABout.js 수정하기
+> 액션04. 라우터 테스트해 보기
+> 액션05. Home 컴포넌트를 위한 Route컴포넌트 추가하기
+> 액션06. 라우터 테스트하고 문제 찾아보기
+> 액션07. 라우터 자세히 살펴보기
+> 액션08. 라우터 다시 테스트해 보기
+> 액션09. App 다시 원래대로 돌리기
+> 액션11. About.css 작성하기
+> 08-3. 네비게이션 만들어 보기
+- 조금 더 나아가기 <br>
+<h2> 08-1. react-router-dom 설치하고 프로젝트 폴더 정리하기 </h2>
+  - 간단한 메뉴를 추가한다. <br>
+  - 메뉴를 클릭하면 화면이 이동해야 하는데, 이때 필요한 것이 라우터이다. <br>
+  - 라우터는 react-router-dom 패키지를 이용하면 된다. <br>
+    * 액션01. react-router-dom 설치하기<br>
+    * 액션02. components 폴더에 Movie 컴포넌트 옮기기<br>
+    * 액션03. routes 폴더에 라우터가 보여줄 화면 만들기 <br>
+    * 액션04. Home.js 수정하기 <br>
+    * 액션05. Home.css 만들기/ 액션06 App.js 수정하기<br>
+<h2> 08-2. 라우터 만들어 보기</h2>
+  - 라우터는 사용자가 입력한 URL을 통해 특정 컴포넌트를 불러준다.<br>
+  - 예) localhost:3000/about<br>
+  - React-router-dom은 여러 종류의 라우터를 제공하는데, 여기서는 HashRouter와 Route 컴포넌트를 사용한다.<br>
+  - App.js에 HashRouter와 Route 컴포넌트 import하고 적용한다.<br>
+    * 액션01. HashRouter와 Route 컴포넌트<br>
+    * 액션02. Route 컴포넌트에 path, component props 추가하기 <br>
+    * 액션03. About.js 수정하기<br>
+    * 액션04. 라우터 테스트해 보기<br>
+    * 액션05. Home 컴포넌트를 위한 Route컴포넌트 추가하기<br>
+    * 액션06. 라우터 테스트하고 문제 찾아보기<br>
+    * 액션07. 라우터 자세히 살펴보기<br>
+    * 액션08. 라우터 다시 테스트해 보기<br>
+    * 액션09. App 다시 원래대로 돌리기<br>
+    * 액션11. About.css 작성하기<br>
+<h2>  08-3. 네비게이션 만들어 보기</h2>
+    * 액션01. Navigation 컴포넌트 만들기<br>
+    * 액션02. Navigation 컴포넌트 App 컴포넌트에 포함 시키기 <br>
+    * 액션03. Home 링크 눌러 보기<br>
+    * 액션04. a태그 Link 컴포넌트로 바꾸기<br>
+    * 액션05. Navigation 컴포넌트 위치 다시 확인하기<br>
+    * 액션06. Navigation 컴포넌트 스타일링하기<br>
+<h2>  08-4. 영화 상세 정보 기능 만들어 보기</h2>  
+  - route props를 이용해 영화 카드를 누르면 상세 정보를 보여주는 기능을 만들어 본다.<br>
+  - route props는 라우팅 대상이 되는 컴포넌트에 넘겨주는 기본 props를 말한다.<br>
+    * 액션01. route props 살펴보기<br>
+    * 액션02. route props에 데이터 담아 보내기<br>
+    * 액션03. route props 다시 살펴 보기<br>
+    * 액션04. Navigation 컴포넌트 정리하기<br>
+    * 액션06. Deatil 컴포넌트 만들기<br>
+    * 액션07. Route 컴포넌트 추가하기<br>
+    * 액션08. 영화 카드를 눌러/ movie-detail로 이동한 다음 영화 데이터 확인하기 <br>
+<h2>08-5. 리다이렉트 기능 만들어 보기</h2>
+  - 리다이렉트 기능을 사용하기 위해서는 route props의 history 키를 활용해야 한다.<br>
+  - history키에는 push,go,goBack,goForward와 같이 키가 있으며, 그 키에는 URL을 변경해 주는 함수들이 있다.<br>
+  - 이 함수들을 이용해서 리다이렉트 기능을 구현한다.<br>
+    * 액션01. History 키 살펴보기<br>
+    * 액션02. Detail 컴포넌트 클래스형 컴포넌트로 변경하기 <br>
+    * 액션03. push() 함수 사용하기 <br>
+    * 액션04. 리다이렉트 기능 확인해 보기<br>
+    * 액션05. 영화 제목 출력하기<br>
+    * 액션06. /movie-detail로 바로 이동하기
+    * 액션07. location.state 확인하기
+    
 ## [ 10월 13일]
 > 학습내용 <br />
 > 06-3 Movie 컴포넌트 만들기
