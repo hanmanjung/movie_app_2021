@@ -1,5 +1,63 @@
 # 한만중 201840233
 
+## [ 11월 10일]
+> 학습내용 <br />
+> 컴포넌트 설치 오류
+> 컴포넌트 설치 오류 등 원인 규명이 되지 안은 오류가 있을 경우
+> package.json과 package-lock.json 차이
+- 조금 더 나아가기 <br>
+<p>git hub 페이지 만들기
+-package.json<br>
+<br>
+"homepage": "https://limjeahyuk.github.io/movie2021"<br>
+<br>
+script<br>
+    "predeploy": "npm run build",<br>
+    "deploy": "gh-pages -d build"<br>
+<br>
+터미널<br>
+npm install gh-pages<br>
+<br>
+배포<br>
+npm run deploy<br>
+<br>
+min 파일<br>
+줄바꿈을 다 없애버리고 한줄로 사용.<br>
+-> 줄바꿈도 1byte 이기 때문에 500줄 짜리 한줄로 만들면 500byte 줄일수 있음.<br>
+배포할때는 min 파일로 해야함.<br>
+<br>
+cdn으로 할때...<br>
+리액트 cdn >  babel > 스크립트 타입에 text-babel 넣어주기<br>
+<br>
+리액트 장점.<br>
+내가 고치고 싶은 곳만 고칠수 있음.<br>
+요즘 유튜브 , 페이스북 같은 거대한 사이트를 전체적으로 고치려면<br>
+한세월 걸린다. 하지만 리액트는 고치고 싶은 부분만<br>
+고칠 수 있어서 쉽게 바꿀 수 있다.</p><br>
+<br>
+<h2> 컴포넌트 설치 오류 등 원인 규명이 되지 안은 오류가 있을경우</h2>
+   - $ npm cache clean --force<br>
+   - $ npm rebuild<br>
+   - $ rm -rf node_modules<br>
+   - $ npm install<br>
+<br>
+   * 만일 rm명령이 실행되지 않으면 shell을 관리자 권한으로 실행한 후 다시 시도해 본다.<br>
+   * 그래도 안될 경우는 탐색기에서 삭제하면 되는데 시간이 조금 걸릴 수는 있다.<br>
+   * 원인 모를 문제가 발생했을 때 cache clean과 rebuild를 통해 많은 부분 해결되기도 한다.<br>
+<br>
+<h2> package.json과 package-lock.json 차이</h2>
+   - package.json은 패키지 의존성 관리 파일이다.<br>
+   - 협업을 할 때는 팀원들 각자의 컴퓨터에 같은 패키지들을 설치해서 동일한 개발환경을 구성해야 하는게 이때 사용하는 것이 package.json이다.<br>
+   - 물론 개인의 프로젝트를 재 생성하거나, 이번의ㅣ 경우처럼 오류가 있을 때도 유용하게 사용된다.<br>
+   - 하지만 간혹 팀원들 중 버전이 다르게 설치되는 경우 앱이 동작하지 않는 경우도 있어 난감할 때가 생긴다. 이때는 다음과 같이 확인하고 조치한다.
+     결국 앞서 소개한 방법으로 해결하는 것이다.<br>
+   - package.json의 경우는 version range를 사용한다. "express":"~4.16.1"<br>
+   - package.json-lock.json 이 변경될 때 마다 업데이트 되는 것으로 좀더 정확한 버전이 기록되어 있다.<br>
+<br>
+   - npm install을 진행하더라도 서로 다른 node_modules트리를 생성하는 경우가 발생한다.<br>
+   - 이것은 npm의 버전이 다른 경우, npm 알고리즘의 차이가 나기 때문이다.<br>
+   - 그래서 팀원 간의 문제가 발행하면 npm버전부터 확인한다.<br>
+     
 ## [ 11월 3일]
 > 학습내용 <br />
 > 액션06. 라우터 테스트하고 문제 찾아보기
