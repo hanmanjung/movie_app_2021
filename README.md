@@ -1,5 +1,76 @@
 # 한만중 201840233
 
+## [ 11월 17일]
+> 학습내용 <br />
+> handleChange는 모든 키보드 입력마다 state 갱신
+> 사용자입력 -> handleChange -> React의 state 갱신
+> 외부 플러그인 사용
+> npx-create-react-app markdown-editor 로 새로운 프로젝트 생성
+> class MarkdownEditor extends React.Component -> MarkdownEditor부분을 App으로 변경
+- 조금 더 나아가기 <br>
+리액트 >  비동기식 <br>
+<br>
+* 동기식 : 서버랑 동기화 시킨다. > 다운로드 한새월 걸림<br>
+<br>
+---------------------------------------<br>
+<br>
+ - state = 0<br>
+ - state.seconds +1 > state에 1더하기<br>
+ - this.tick(), 1000  >> 1초(1000) 마다 한번씩 tick 실행<br>
+<br>
+-상태를 가지는 컴포넌트<br>
+컴포넌트는 this.props를 이용해 입력 데이터를 다루는 것 외에도<br>
+내부적인 상태 데이터를 가질수있습니다. 이는 this.state로 접근할 수 있습니다.<br>
+컴포넌트의 상태 데이터가 바뀌면 render(),가 호출되어 마크업이 갱신<br>
+<br>
+-------------------------------------<br>
+<br>
+ - handlechange는 모든 키보드 이벽마다 react의 state를 갱신해서 보여준다.<br>
+ - 유저입력 > handlechange > react의 state를 갱신 > form element가 react state를 참조<br>
+ - 유저 입력을 강제로 대문자로 변경할 경우에도 사용.<br>
+ - input area에 이벤트가 발생하면 hendlechange가 동작하여 state의 text값을 변경<br>
+ - add버튼을 클릭하여 리스트의 lenth에 1을 더해서 버튼에 출력<br>
+ - e.preventDefault(); <br>
+// 양식을 제출할 때는 브라우저 새로고침이 발생하는 데 리액트는 비동기식이기 때문에 필요없음. 그걸 안하게 만드는 문장 <br>
+<br>
+Key Props<br>
+key는 props가 안정적으로 사용할 수 있도록 고유성을 부여하기 위해 필요하다<br>
+react가 어떤 props를 변경, 추가할지 식별을 도와줌<br>
+반드시 date를 사용하지 않아도 index 값도 가능 , 유일한 값이라면 어느 값이든 가능.<br>
+<br>
+javascript<br>
+java는 배열속성을 정해주지만 javascript는 속성을 지정해주지 않기 때문에<br>
+배열 안에 아무거나 넣어도 된다.<br>
+<br>
+-애플리케이션<br>
+props와 state를 사용해서 간단한 todo 애플리케이션을 만들수 있습니다.<br>
+state를 사용해 사용자가 입력한 텍스트와 파일 목록을 관리합니다.<br>
+이벤트 핸들러들이 인라인으로 각각 존재하는 것처럼 보이지만, 실제로는 이벤트 위임을 통해 하나로 구현됩니다.<br>
+<br>
+<br>
+----------------------------------------------<br>
+ 외부 플러그인은 remarkable을 사용함으로 cdn으로 링크를 추가한다,<br>
+https://github.com/jonschlinkert/remarkable<br>
+<br>
+ - 외부 플러그인을 사용하는 컴포넌트<br>
+react는 유연하며 다른 라이브러리나 프레임워크를 함께 활용할 수 있습니다.<br>
+이 예제에서는 외부 마크다운 라이브러리인 remarkable을 사용해<br>
+ <textarea>의 값을 실시간으로 변환합니다.<br>
+<br>
+새로운 react 만들기.<br>
+npx create-react-app markdown-editor<br>
+<br>
+npm install remarkable<br>
+<br>
+import { Remarkable } from 'remarkable';<br>
+import React, { Component } from 'react';<br>
+<br>
+하고 복사<br>
+<br>
+-review<br>
+외부 컴포넌트를 사용하기 위해 생성자 내 객체를 생성한다.<br>
+state 를 이용<br>
+
 ## [ 11월 10일]
 > 학습내용 <br />
 > 컴포넌트 설치 오류
@@ -9,7 +80,7 @@
 <p>git hub 페이지 만들기
 -package.json<br>
 <br>
-"homepage": "https://limjeahyuk.github.io/movie2021"<br>
+"homepage": "https://hanmanjung.github.io/movie2021"<br>
 <br>
 script<br>
     "predeploy": "npm run build",<br>
