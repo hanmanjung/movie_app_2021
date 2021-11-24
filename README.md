@@ -1,5 +1,203 @@
 # 한만중 201840233
 
+## [ 11월 24일]
+> 학습내용 <br />
+> Hello world 개념
+> JSX 소개
+> 엘리먼트 렌더링
+> Component와 Props
+> State와 생명주기
+- 조금 더 나아가기 <br>
+<h1>Hello World</h1>
+<pre><code>
+  ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('root')
+);
+</pre><code>
+<h1>JSX 소개</h1>
+<pre><code>
+const element = <h1>Hello, world!</h1>;
+</pre><code>
+<h3>JSX에 표현식 포함하기</h3>
+<pre><code>
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+</pre><code>
+<br>
+<hr>
+<pre><code>
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+</pre><code>
+<h3>JSX도 표현식입니다</h3>
+</pre><code>
+<h1>JSX 소개</h1>
+<pre><code>
+const element = <h1>Hello, world!</h1>;
+</pre><code>
+<h3>JSX에 표현식 포함하기</h3>
+<pre><code>
+function getGreeting(user) {
+  if (user) {
+    return <h1>Hello, {formatName(user)}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
+}
+
+</pre><code>
+<h3>JSX 속성 정의</h3>
+<pre><code>
+const element = <div tabIndex="0"></div>;
+</pre><code>
+<hr>
+<pre><code>
+const element = <img src={user.avatarUrl}></img>;
+</pre><code>
+<h3>JSX로 자식 정의</h3>
+<pre><code>
+const element = <img src={user.avatarUrl} />;
+</pre><code>
+<hr>
+<pre><code>
+const element = (
+  <div>
+    <h1>Hello!</h1>
+    <h2>Good to see you here.</h2>
+  </div>
+);
+</pre><code>
+<h3>JSX는 객체를 표현합니다.</h3>
+<pre><code>
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+</pre><code>
+<hr>
+<pre><code>
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+</pre><code>
+<h1>엘리먼트 렌더링</h1>
+<pre><code>
+const element = <h1>Hello, world</h1>;
+</pre><code>
+<h3>렌더링 된 엘리먼트 업데이트하기</h3>
+<pre><code>
+function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(element, document.getElementById('root'));
+}
+
+setInterval(tick, 1000);
+</pre><code>
+<h1>Component와 Props</h1>
+<br>
+<h3>컴포넌트 추출</h3>
+<pre><code>
+function Comment(props) {
+  return (
+    <div className="Comment">
+      <div className="UserInfo">
+        <img className="Avatar"
+          src={props.author.avatarUrl}
+          alt={props.author.name}
+        />
+        <div className="UserInfo-name">
+          {props.author.name}
+        </div>
+      </div>
+      <div className="Comment-text">
+        {props.text}
+      </div>
+      <div className="Comment-date">
+        {formatDate(props.date)}
+      </div>
+    </div>
+  );
+}
+</pre><code>
+<h1>State and Lifecycle</h1>
+<pre><code>
+function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(
+    element,
+    document.getElementById('root')
+  );
+}
+
+setInterval(tick, 1000);
+</pre><code>
+<hr>
+<h3>함수에서 클래스로 변환하기</h3>
+<pre><code>
+class Clock extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+</pre><code>
+<p>
+- react는 처음부터 점진적으로 적용할 수 있도록 설계되었으며 필요한 만큼 react를 사용할 수 있습니다.
+- 온라인 코드 편집기를 사용하여 간편하게 리액트를 경험할 수 있다.<br>
+- codesandbox는 create-react-app으로 생성된 프로젝트와 동일한 환경에서 테스트가 가능하다,
+- cdn방식으로 간편하게 테스트를 할 수 있도록 html코드를 제공하고 있다.<br>
+- react문서가 어렵게 느껴진다면. tania rascia가 쓴 react 개요를 먼저 학습하는 것이 도움이 된다,
+- 개발을 통해 react를 학습하고 싶다면 자습서를 추천한다.<br>
+<br>
+틱택톡 게임 만들기 > react 공부<br>
+<br>
+react를 사용하는 데 관심이 있으면, 온라인 코드 편집기를 사용할 수 있습니다. codepen, codesandbox 또는 stackblitz에서 hello world 템플릿을 사용해 보세요.<br>
+<br>
+react 자습서 참고.<br>
+<br>
+<br>
+mdn new doc javascript 재입문하기 js 튜토리얼<br>
+</p>
+
 ## [ 11월 17일]
 > 학습내용 <br />
 > handleChange는 모든 키보드 입력마다 state 갱신
