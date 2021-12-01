@@ -1,5 +1,227 @@
 # 한만중 201840233
 
+## [ 12월 01일]
+> 학습내용 <br />
+> 6.이벤트 처리하기
+> 7.조건부 렌더링
+> 8.리스트와 key
+> 9.폼
+- 조금 더 나아가기 <br>
+<h1>이벤트 처리하기</h1>
+   * React의 이벤트는 소문자 대신 캐멀 케이스(camelCase)를 사용합니다.<br>
+   * JSX를 사용하여 문자열이 아닌 함수로 이벤트 핸들러를 전달합니다.<br>
+   <h3> HTML </h3>
+   <pre><code>
+   <button onclick="activateLasers()">
+  Activate Lasers
+</button>
+</pre><code>
+<br>
+<h3>React</h3>
+<pre><code>
+<button onClick={activateLasers}>
+  Activate Lasers
+</button>
+</pre><code>
+<br>
+<br>
+<pre><code>
+function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('You clicked submit.');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+</pre><code>
+<br>
+<h2> 이벤트 핸들러에 인자 전달하기 </h2>
+<pre><code>
+<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+}
+</pre><code>
+<br>
+<h1> 조건부 렌더링</h1>
+<h3>엘리먼트 변수 </h3>
+<pre><code>
+function LoginButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      Login
+    </button>
+  );
+}
+
+function LogoutButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      Logout
+    </button>
+  );
+}
+</pre><code>
+<br>
+<hr>
+<h3>논리 && 연산자로 If를 인라인으로 표현하기</h3>
+<pre><code>
+function Mailbox(props) {
+  const unreadMessages = props.unreadMessages;
+  return (
+    <div>
+      <h1>Hello!</h1>
+      {unreadMessages.length > 0 &&
+        <h2>
+          You have {unreadMessages.length} unread messages.
+        </h2>
+      }
+    </div>
+  );
+}
+
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+ReactDOM.render(
+  <Mailbox unreadMessages={messages} />,
+  document.getElementById('root')
+);
+</pre><code>
+<hr>
+<h3>조건부 연산자로 If-Else구문 인라인으로 표현하기</h3>
+<pre><code>
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
+    </div>
+  );
+}
+</pre><code>
+<br>
+<p> 가독성은 좀 떨어지지만, 더 큰 표현식에도 이 구문을 사용할 수 있습니다. </p>
+<pre><code>
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      {isLoggedIn
+        ? <LogoutButton onClick={this.handleLogoutClick} />
+        : <LoginButton onClick={this.handleLoginClick} />
+      }
+    </div>
+  );
+}
+</pre><code>
+<br>
+<h3>컴포넌트가 렌더링하는 것을 막기</h3>
+<pre><code>
+function WarningBanner(props) {
+  if (!props.warn) {
+    return null;
+  }
+
+  return (
+    <div className="warning">
+      Warning!
+    </div>
+  );
+}
+
+class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {showWarning: true};
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+  }
+
+  handleToggleClick() {
+    this.setState(state => ({
+      showWarning: !state.showWarning
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        <WarningBanner warn={this.state.showWarning} />
+        <button onClick={this.handleToggleClick}>
+          {this.state.showWarning ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Page />,
+  document.getElementById('root')
+);
+</pre><code>
+<h1> 리스트와 key</h1>
+<h3> 여러개의 컴포넌트 렌더링 하기</h3>
+<pre><code>
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+  <li>{number}</li>
+);
+</pre><code>
+<br>
+<hr>
+<h2>기본 리스트 컴포넌트</h2>
+<pre><code>
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    <li>{number}</li>
+  );
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+
+const numbers = [1, 2, 3, 4, 5];
+ReactDOM.render(
+  <NumberList numbers={numbers} />,
+  document.getElementById('root')
+);
+</pre><code>
+<br>
+<hr>
+<h3>JSX에 map() 포함시키기</h3>
+<pre><code>
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    <ListItem key={number.toString()}
+              value={number} />
+  );
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  );
+}
+</pre><code>
+<br>
+<pre><code>
+function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    <ul>
+      {numbers.map((number) =>
+        <ListItem key={number.toString()}
+                  value={number} />
+      )}
+    </ul>
+  );
+}
+</pre><code>
+
 ## [ 11월 24일]
 > 학습내용 <br />
 > Hello world 개념
